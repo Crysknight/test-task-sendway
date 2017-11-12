@@ -6,12 +6,14 @@ class ThemeStore {
 			name: 'orange',
 			active: true,
 			mainColor: '#f99630',
+			mainColorPale: '#faab59',
 			mainColorTransp: (opacity) => `rgba(249, 150, 48, ${opacity})`
 		},
 		{
 			name: 'green',
 			active: false,
 			mainColor: '#6dc484',
+			mainColorPale: '#8acf9c',
 			mainColorTransp: (opacity) => `rgba(109, 196, 132, ${opacity})`
 		}
 	];
