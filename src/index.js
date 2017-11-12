@@ -1,19 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-	BrowserRouter as Router,
-	Route,
-	Link
-} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
+import { injectGlobal } from 'styled-components';
+import { Provider } from 'mobx-react';
 
-import store from './Store';
+import ThemeStore from './stores/ThemeStore';
+import DashboardStore from './stores/DashboardStore';
 import Layout from './containers/Layout';
 
+import globalStyles from './global-styles';
+
+
+injectGlobal([globalStyles]);
 
 ReactDOM.render((
-	<Router>
-		<Layout store={store} />
-	</Router>
+	<BrowserRouter>
+		<Provider
+			ThemeStore={ThemeStore}
+			DashboardStore={DashboardStore}
+		>
+			<Layout />
+		</Provider>
+	</BrowserRouter>
 ), document.getElementById('root'));
 registerServiceWorker();
