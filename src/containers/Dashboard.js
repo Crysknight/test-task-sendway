@@ -11,6 +11,7 @@ import NavIcon from '../components/nav-icon';
 import NavDropdown from '../components/nav-dropdown';
 
 @inject('DashboardStore')
+@inject('CallStore')
 @observer
 export default class Dashboard extends Component {
 
@@ -23,6 +24,10 @@ export default class Dashboard extends Component {
 					let className = link.optionalClass ? link.optionalClass : '';
 					className += link.active ? ' opened' : ' closed';
 					className = className.trim();
+					if (
+						link.name === 'notifications' &&
+						this.props.CallStore.missedCalls.length > 0
+					) className += ' got-notifications';
 					return (
 						<NavItem key={index} className={className}>
 							<NavLink onClick={(e) => {

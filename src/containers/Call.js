@@ -7,6 +7,7 @@ import Button from '../components/button';
 
 import phone from '../img/067-phone.svg';
 import cross from '../img/272-cross.svg';
+import circleDown from '../img/324-circle-down.svg';
 
 @inject('CallStore')
 @observer
@@ -14,8 +15,10 @@ export default class Call extends Component {
 
 	manageCall() {
 		let clStore = this.props.CallStore;
-		if (!clStore.activeCall.calling) {
+		if (clStore.activeCall.status === null) {
 			clStore.performCall();
+		} else if (clStore.activeCall.status === 'incoming') {
+			clStore.answerCall();
 		} else {
 			clStore.stopCall();
 		}
@@ -24,11 +27,39 @@ export default class Call extends Component {
 	getContact() {
 		let clStore = this.props.CallStore;
 		let status = null;
-		if (clStore.activeCall.calling) {
-			status = <div>Outgoing call to {clStore.activeCall.name}</div>;
+		let className = 'popup-contact';
+		let buttonFold = null;
+		switch (clStore.activeCall.status) {
+			case 'dialing': {
+				className += ' dialing';
+				status = <div>Outgoing call to {clStore.activeCall.name}</div>;
+				break;
+			}
+			case 'no answer': {
+				status = <div style={{ color: '#d99' }}>{clStore.activeCall.name} doesn't answer</div>;
+				break;
+			}
+			case 'incoming': {
+				className += ' incoming';
+				status = <div>Incoming call from {clStore.activeCall.name}</div>;
+				break;
+			}
+			case 'active': {
+				className += ' active';
+				buttonFold = (
+					<Button className="fold" onClick={() => clStore.foldCall()}>
+						<img src={circleDown} alt="fold" />
+					</Button>
+				);
+				break;
+			}
+			default: {
+				break;
+			}
 		}
 		return (
-			<PopUpContact className={clStore.activeCall.calling ? 'popup-contact calling' : 'popup-contact'}>
+			<PopUpContact className={className}>
+				{buttonFold}
 				{clStore.activeCall.icon ? 
 					(<img src={clStore.activeCall.icon} alt={clStore.activeCall.name}/>) :
 					null
@@ -53,9 +84,12 @@ export default class Call extends Component {
 	}
 
 	render() {
+		let className = '';
 		let clStore = this.props.CallStore;
+		if (clStore.activeCall.active) className += 'active';
+		if (clStore.activeCall.folded) className += ' folded';
 		return (
-			<PopUp className={clStore.activeCall.active ? 'active' : ''}>
+			<PopUp className={className}>
 				<div>{this.getContact()}</div>
 			</PopUp>
 		);

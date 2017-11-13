@@ -19,6 +19,47 @@ const PopUp = styled.div`
 		button {
 			opacity: 1;
 		}
+		.popup-contact > div {
+			opacity: 1;
+		}
+	}
+	&.folded {
+		height: 64px;
+		bottom: 0;
+		top: auto;
+		background-color: ${props => props.theme.mainColor};
+		color: #fff;
+		& > * {
+			justify-content: flex-start;
+			height: 64px;
+			width: 100%;
+			background-color: transparent;
+			.popup-contact {
+				width: 300px;
+				height: 50px;
+				button:not(.fold) {
+					display: none;
+				}
+				div {
+					display: none;
+				}
+				& > img {
+					width: 50px;
+					height: 50px;
+				}
+				h2, h3 {
+					display: none;
+				}
+				button.fold {
+					margin-top: 10px;
+					transform: rotate(180deg);
+					background-color: #fff;
+					img {
+						filter: none;
+					}
+				}
+			}
+		}
 	}
 	& > * {
 		display: flex;
@@ -33,6 +74,9 @@ const PopUp = styled.div`
 		background-color: #fff;
 	}
 	button {
+		opacity: 0;
+	}
+	.popup-contact > div {
 		opacity: 0;
 	}
 `;

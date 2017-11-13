@@ -21,27 +21,32 @@ class ContactStore {
 		{
 			name: 'Alex Webster',
 			number: '79996669966',
-			icon: alex
+			icon: alex,
+			status: 'Currently working on the new Conquering Dystopia album. It\'ll gonna be a bomb!'
 		},
 		{
 			name: 'George Fisher',
 			number: '79192553322',
-			icon: george
+			icon: george,
+			status: 'They always ask me about my neck, not about what I am feeling'
 		},
 		{
 			name: 'Pat O\'Brien',
 			number: '79055555555',
-			icon: pat
+			icon: pat,
+			status: 'Just another grim solo to make up - and I can call it a day'
 		},
 		{
 			name: 'Paul Mazurkiewicz',
 			number: '79032223232',
-			icon: paul
+			icon: paul,
+			status: '1/4 1/4 1/4 1/3 1/4 1/4 1/3 1/3 1/4 1/4 1/4 1/4...'
 		},
 		{
 			name: 'Rob Barret',
 			number: '79063133131',
-			icon: rob
+			icon: rob,
+			status: 'I just enjoy it being a member of Cannibal Corpse'
 		}
 	];
 	@observable filter = '';

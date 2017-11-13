@@ -9,6 +9,9 @@ const NavIcon = styled.img`
 	${NavLink}:hover &, ${NavItem}.opened & {
 		filter: invert(100%);
 	}
+	${NavItem}.notifications.got-notifications & {
+		filter: invert(100%);
+	}
 `;
 
 export default NavIcon;

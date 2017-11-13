@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 
 import Header from './Header';
 import Call from './Call';
+import Body from './Body';
 
 
 @inject('ThemeStore')
@@ -17,6 +18,7 @@ class Layout extends Component {
 				<div onClick={() => this.props.DashboardStore.setActiveLink(false)}>
 					<Header />
 					<Call />
+					<Body />
 				</div>
 			</ThemeProvider>
 		);

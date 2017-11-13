@@ -18,6 +18,9 @@ const NavLink = styled.button`
 	&:hover, ${NavItem}.opened & {
 		background-color: ${props => props.theme.mainColor}
 	}
+	${NavItem}.notifications.got-notifications & {
+		background-color: #d99;
+	}
 `;
 
 export default NavLink;

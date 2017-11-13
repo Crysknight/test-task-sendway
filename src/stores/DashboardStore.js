@@ -30,7 +30,8 @@ class DashboardStore {
 			name: 'notifications',
 			icon: bell,
 			active: false,
-			dropdown: <DropdownNotifications />
+			dropdown: <DropdownNotifications />,
+			optionalClass: 'notifications'
 		},
 		{
 			name: 'options',

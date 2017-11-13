@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { injectGlobal } from 'styled-components';
 import { Provider } from 'mobx-react';
@@ -25,7 +25,7 @@ ReactDOM.render((
 			ContactStore={ContactStore}
 			CallStore={CallStore}
 		>
-			<Layout />
+			<Route component={Layout} />
 		</Provider>
 	</BrowserRouter>
 ), document.getElementById('root'));
