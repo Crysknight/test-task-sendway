@@ -1,6 +1,6 @@
-### Test Task Sendway
+## Test Task Sendway
 
-## Инструкция по установке:
+### Инструкция по установке:
 
 В cmd
 ```
