@@ -26,15 +26,18 @@ const NavDropdown = styled.div`
 		padding: 0;
 		border: 0;
 		border-radius: 0;
-		.switch-keys {
-			width: 64px;
+		.switch-keys, .call {
+			width: 44px;
 			height: 64px;
 			position: absolute;
 			top: 0;
 			right: 0;
-			padding: 20px;
+			padding: 20px 10px;
 			filter: invert(100%);
 			cursor: pointer;
+		}
+		.call {
+			right: 44px;
 		}
 	}
 	${NavItem}.call.opened & {

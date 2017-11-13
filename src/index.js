@@ -8,6 +8,7 @@ import { Provider } from 'mobx-react';
 import ThemeStore from './stores/ThemeStore';
 import DashboardStore from './stores/DashboardStore';
 import ContactStore from './stores/ContactStore';
+import CallStore from './stores/CallStore';
 
 import Layout from './containers/Layout';
 
@@ -22,6 +23,7 @@ ReactDOM.render((
 			ThemeStore={ThemeStore}
 			DashboardStore={DashboardStore}
 			ContactStore={ContactStore}
+			CallStore={CallStore}
 		>
 			<Layout />
 		</Provider>

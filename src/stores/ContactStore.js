@@ -7,7 +7,8 @@ import paul from '../img/paul.jpg';
 import rob from '../img/rob.jpg';
 
 const formatNumber = (number) => {
-	let formattedNumber = number.split('');
+	let formattedNumber = '';
+	number = number.split('');
 	formattedNumber = `+${number[0]} `;
 	formattedNumber += `(${number[1] + number[2] + number[3]}) `;
 	formattedNumber += `${number[4] + number[5] + number[6]}-`;
@@ -56,9 +57,21 @@ class ContactStore {
 		// Filter first 4 not to have an overly large list
 		return filteredContacts.filter((contact, index) => index < 4);
 	}
+	// Get a contact which as fully matched by number with filter by number
+	@computed get fullyMatched() {
+		for (let contact of this.contacts) {
+			if (contact.number === this.filter) {
+				return contact;
+			}
+		}
+		return null;
+	}
+	// In filter we replace symbols +()- and whitespace to match the pure phone number
+	// and also we clear it from all the symbols that can mess up the regexp
 	@action setFilter = (filter) => {
 		filter = filter.replace(/(\+|\(|\)| |-)/g, '');
 		filter = filter.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&");
+		filter = filter.replace(/^8/, '7');
 		this.filter = filter;
 	}
 }
